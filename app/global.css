@@ -11,6 +11,8 @@ button { cursor:pointer; }
 .brand { color:var(--ink); font-size:22px; font-weight:850; text-decoration:none; letter-spacing:-1px; }
 .brand span { color:var(--violet); }
 .top-actions { display:flex; align-items:center; gap:10px; }
+.help-button { width:36px; height:36px; border:1px solid var(--line); border-radius:50%; background:white; color:var(--ink); font-weight:850; }
+.help-button:hover { border-color:var(--violet); color:var(--violet); background:var(--soft); }
 .quiet,.primary,.file { border:0; border-radius:999px; padding:12px 18px; font-weight:750; }
 .quiet,.file { background:transparent; color:var(--ink); }
 .quiet:hover,.file:hover { background:#efedf2; }
@@ -127,6 +129,14 @@ th { position:sticky; top:0; z-index:5; font-size:11px; color:var(--muted); text
 tr:last-child td { border:0; }
 .overlay { position:fixed; inset:0; z-index:50; background:rgba(15,12,31,.72); backdrop-filter:blur(8px); padding:4vh 20px; overflow:auto; display:flex; align-items:flex-start; justify-content:center; }
 .modal { position:relative; width:min(960px,100%); padding:48px; background:white; border-radius:30px; box-shadow:0 30px 80px rgba(0,0,0,.25); }
+.help-modal { width:min(820px,100%); }
+.help-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:26px; }
+.help-grid > div { padding:18px; border:1px solid var(--line); border-radius:16px; background:#fbfaff; }
+.help-number { display:block; color:var(--violet); font-size:11px; font-weight:850; letter-spacing:.12em; }
+.help-grid h3 { margin:9px 0 6px; font:600 18px Georgia,serif; }
+.help-grid p { margin:0; color:var(--muted); font-size:13px; line-height:1.5; }
+.help-tip { margin-top:18px; padding:15px 17px; border-radius:14px; background:var(--soft); color:var(--muted); font-size:13px; line-height:1.5; }
+.help-tip strong { color:var(--ink); }
 .close { position:absolute; right:24px; top:22px; width:43px; height:43px; border:0; border-radius:50%; background:#f1eff5; color:#6d6977; font-size:27px; }
 .modal-lead { color:var(--muted); margin-bottom:28px; }
 .modal label { display:block; color:#5f5b6b; font-weight:750; font-size:13px; }
@@ -196,6 +206,7 @@ tr:last-child td { border:0; }
   .list-view .card-foot { border-top:1px solid var(--line); padding-top:13px; }
   .list-view .card-foot { order:5; }
   .modal { padding:36px 20px 26px; border-radius:24px; }
+  .help-grid { grid-template-columns:1fr; }
   .form-grid,.detail-summary { grid-template-columns:1fr; }
   .url-row { display:block; }
   .url-row input,.url-row button { border-radius:13px; width:100%; }

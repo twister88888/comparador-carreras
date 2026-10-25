@@ -69,6 +69,7 @@ export default function Home() {
   const [races, setRaces] = useState<Race[]>([]);
   const [ready, setReady] = useState(false);
   const [modal, setModal] = useState<"add" | "detail" | null>(null);
+  const [helpOpen, setHelpOpen] = useState(false);
   const [selected, setSelected] = useState<Race | null>(null);
   const [url, setUrl] = useState("");
   const [draft, setDraft] = useState<Partial<Race> | null>(null);
@@ -262,6 +263,7 @@ export default function Home() {
       <header className="topbar">
         <a className="brand" href="#">Deka<span>Lab</span></a>
         <div className="top-actions">
+          <button className="help-button" onClick={() => setHelpOpen(true)} aria-label="Abrir ayuda" title="Cómo funciona DekaLab">?</button>
           <button
             className="quiet"
             onClick={exportData}
@@ -501,6 +503,26 @@ export default function Home() {
           </section>
         )}
       </section>
+
+      {helpOpen && (
+        <div className="overlay" onMouseDown={(e) => e.target === e.currentTarget && setHelpOpen(false)}>
+          <section className="modal help-modal">
+            <button className="close" onClick={() => setHelpOpen(false)}>×</button>
+            <p className="eyebrow">GUÍA RÁPIDA</p>
+            <h2>Cómo usar DekaLab</h2>
+            <p className="modal-lead">Organiza tus resultados de DEKA, compara carreras y descubre dónde puedes mejorar.</p>
+            <div className="help-grid">
+              <div><span className="help-number">01</span><h3>Añade una carrera</h3><p>Importa un enlace público de Race Result, revisa los datos y guarda el resultado.</p></div>
+              <div><span className="help-number">02</span><h3>Identifica tu PB</h3><p>Marca una carrera como mejor marca personal para que la gráfica filtre tus resultados por participante.</p></div>
+              <div><span className="help-number">03</span><h3>Compara resultados</h3><p>Selecciona dos o más carreras con el checkbox para comparar tiempos, penalizaciones y parciales.</p></div>
+              <div><span className="help-number">04</span><h3>Analiza tu progreso</h3><p>Consulta la evolución de tus tiempos en el gráfico y añade notas personales a cada carrera.</p></div>
+              <div><span className="help-number">05</span><h3>Organiza el listado</h3><p>Filtra por modalidad, ordena por fecha, tiempo o nombre y cambia entre cuadrícula y lista.</p></div>
+              <div><span className="help-number">06</span><h3>Guarda una copia</h3><p>Descarga tus carreras en JSON para conservarlas o recuperarlas desde otro navegador.</p></div>
+            </div>
+            <div className="help-tip"><strong>Consejo:</strong> marca como PB una carrera tuya con el nombre de participante correcto. DekaLab usará ese nombre para separar tus carreras de las de otros participantes.</div>
+          </section>
+        </div>
+      )}
 
       {modal === "add" && (
         <div className="overlay" onMouseDown={(e) => e.target === e.currentTarget && closeModal()}>
